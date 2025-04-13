@@ -6,14 +6,7 @@
     <title>Cambiar Contraseña</title>
     <!-- Material Design Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" />
-    <style>
-        .page-header {
-            background-color: #f8f9fa;
-        }
-        .oblique-image {
-            background-image: url('../assets/img/curved-images/curved6.jpg');
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/resetpassword.css">
 </head>
 <body>
 

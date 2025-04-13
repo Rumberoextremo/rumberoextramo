@@ -440,3 +440,74 @@ body {
   margin-bottom: 0; /* Sin espaciado inferior */
 }
 /*--Fin Styles Reset--*/
+
+/*--Styles SendEmail--*/
+/* Estilos generales */
+body {
+  background-color: #f0f2f5; /* Color de fondo suave */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Encabezado de la página */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+/* Estilos de la tarjeta */
+.card {
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: white; /* Fondo blanco */
+  transition: transform 0.3s; /* Transición suave */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Estilos del encabezado de la tarjeta */
+.card-header {
+  border-bottom: none; /* Sin borde inferior */
+  text-align: center; /* Centrar texto */
+  padding: 20px 0; /* Espaciado superior e inferior */
+}
+
+/* Estilos del formulario */
+.form-control {
+  border-radius: 10px; /* Bordes redondeados */
+  border: 1px solid #ced4da; /* Borde gris claro */
+  transition: border-color 0.3s; /* Transición suave */
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Color de borde al enfocar */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar */
+}
+
+/* Botón */
+.btn {
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  transition: background-color 0.3s; /* Transición suave */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos de alertas */
+.alert {
+  border-radius: 10px; /* Bordes redondeados */
+  margin-top: 10px; /* Margen superior */
+}
+
+/* Imagen de fondo */
+.oblique-image {
+  background-size: cover; /* Cubrir el área */
+  opacity: 0.7; /* Opacidad para suavizar la imagen */
+}
+
