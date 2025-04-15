@@ -121,28 +121,25 @@
                 </div>
                 <!-- END COUNTDOWN -->
 
-                <div class="section clearfix animated fadeIn">
-                    <p>¿Quieres recibir una notificación cuando el sitio web esté listo?</p>
+                <div class="section clearfix animated fadeIn" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 10px; padding: 30px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+                    <h2 style="color: #8514d0;">¿Quieres recibir una notificación cuando el sitio web esté listo?</h2>
                     <form id="form_newsletter">
                         <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
+                            <div class="col-md-8 col-md-offset-2">
                                 <div class="input-group input-group-lg">
-                                    <input type="email" name="email" class="form-control" placeholder="Introduce tu email" >
+                                    <input type="email" name="email" class="form-control" placeholder="Introduce tu email" style="border-radius: 5px; border: 1px solid #ff6f61;">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="fa fa-check"></i> ¡Avísame!</button>
+                                        <button class="btn" type="submit" style="background-color: #46c319; color: white; border-radius: 5px; transition: background-color 0.3s;">
+                                            <i class="fa fa-check"></i> ¡Avísame!
+                                        </button>
                                     </span>
                                 </div>
                                 <div class="clearfix"></div>
-                                <div id="form_newsletter_result"></div>
+                                <div id="form_newsletter_result" style="margin-top: 10px;"></div>
                             </div>
                         </div>
                     </form>
-                </div>
-
-                <div class="section clearfix animated fadeIn" id="contact">
-                    <a href="#"><i class="fa fa-envelope-o"></i> email@ycompany.com</a>
-                    <a href="#"><i class="fa fa-phone"></i> (+00) 123 4567</a>
-                </div>
+                </div>                
 
                 <div class="section clearfix">
                     <a href="#" class="btn btn-transparent btn-facebook"><i class="fa fa-facebook fa-fw"></i></a>
@@ -198,7 +195,7 @@
 
         // Set the countdown duration (e.g., 7 days in seconds)
         window.onload = function () {
-            const countdownDuration = 60 * 24 * 60 * 60; // 7 days
+            const countdownDuration = 90 * 24 * 60 * 60; // 7 days
             startCountdown(countdownDuration);
         };
     </script>
