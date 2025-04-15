@@ -41,6 +41,11 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('home');
 	});
 
+	//Routa para pagina en construcción
+	Route::get('/under-construction', function() {
+		return view('under-construction');
+	});	
+
 	// Ruta para la página de inicio y Dashboard
 	Route::get('/home', [HomeController::class, 'index'])->name('home');
 
