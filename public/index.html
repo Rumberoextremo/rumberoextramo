@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US" class="backgroundColor">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Soonweb - Coming Soon Template - Designed by webnovant.com</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Lemon' rel='stylesheet' type='text/css'>
+    
+    <link rel="shortcut icon" href="images/favicon.jpg">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/YTPlayer.css" />
+    <link rel="stylesheet" type="text/css" href="css/supersized.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .logo {
+            font-size: 3em;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .countdown_group {
+            margin: 0 10px;
+            text-align: center;
+        }
+        .countdown_value {
+            font-size: 2em;
+            color: #007bff;
+        }
+        .countdown_help {
+            font-size: 0.8em;
+            color: #666;
+        }
+        #footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- CONTAINER -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="section clearfix">
+                    <h1 class="logo animated fadeInDown">Soonweb</h1>
+                    
+                    <div id="text_slider">
+                        <div class="slide clearfix"><h2>We are working on the new website</h2></div>
+                        <div class="slide clearfix"><h2>See you soon!</h2></div>
+                    </div>
+                    
+                </div>
+
+                <!-- COUNTDOWN -->
+                <div class="section clearfix animated fadeIn" id="countdown">
+                    <div class="countdown_group">
+                        <span class="countdown_value" id="days">00</span> 
+                        <span class="countdown_help">Days</span>
+                    </div>
+                    <div class="countdown_group">
+                        <span class="countdown_value" id="hours">00</span> 
+                        <span class="countdown_help">Hours</span>
+                    </div> 
+                    <div class="countdown_group">
+                        <span class="countdown_value" id="minutes">00</span> 
+                        <span class="countdown_help">Minutes</span> 
+                    </div>
+                    <div class="countdown_group">
+                        <span class="countdown_value" id="seconds">00</span> 
+                        <span class="countdown_help">Seconds</span>
+                    </div>
+                </div>
+                <!-- END COUNTDOWN -->
+
+                <div class="section clearfix animated fadeIn">
+                    <p>Want to be notified when the website is ready?</p>
+                    <form id="form_newsletter">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="input-group input-group-lg">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter your email" >
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="fa fa-check"></i> Notify me!</button>
+                                    </span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div id="form_newsletter_result"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="section clearfix animated fadeIn" id="contact">
+                    <a href="#"><i class="fa fa-envelope-o"></i> email@ycompany.com</a>
+                    <a href="#"><i class="fa fa-phone"></i> (+00) 123 4567</a>
+                </div>
+
+                <div class="section clearfix">
+                    <a href="#" class="btn btn-transparent btn-facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                    <a href="#" class="btn btn-transparent btn-twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                    <a href="#" class="btn btn-transparent btn-googleplus"><i class="fa fa-google-plus fa-fw"></i></a>
+                    <a href="#" class="btn btn-transparent btn-youtube"><i class="fa fa-youtube fa-fw"></i></a>
+                    <a href="#" class="btn btn-transparent btn-pinterest"><i class="fa fa-pinterest fa-fw"></i></a>
+                    <a href="#" class="btn btn-transparent btn-instagram"><i class="fa fa-instagram fa-fw"></i></a>
+                    <a href="#" class="btn btn-transparent btn-linkedin"><i class="fa fa-linkedin fa-fw"></i></a>
+                </div>
+
+                <div class="section clearfix">
+                    <a href="#" class="open_aboutus btn btn-transparent animated fadeInUp">More about Our Company</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END CONTAINER -->
+
+    <!-- FOOTER -->
+    <div id="footer">
+        <p>Designed by www.webnovant.com</p>
+    </div>
+    <!-- END FOOTER -->		
+
+    <!-- JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/supersized.min.js"></script>
+    <script src="js/jquery.cycle.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script>
+        // Countdown Timer
+        function startCountdown(duration) {
+            let timer = duration, days, hours, minutes, seconds;
+            const countdownElement = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            setInterval(function () {
+                days = parseInt(timer / 86400, 10);
+                hours = parseInt((timer % 86400) / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                countdownElement.days.textContent = days < 10 ? "0" + days : days;
+                countdownElement.hours.textContent = hours < 10 ? "0" + hours : hours;
+                countdownElement.minutes.textContent = minutes < 10 ? "0" + minutes : minutes;
+                countdownElement.seconds.textContent = seconds < 10 ? "0" + seconds : seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                }
+            }, 1000);
+        }
+
+        // Set the countdown duration (e.g., 7 days in seconds)
+        window.onload = function () {
+            const countdownDuration = 7 * 24 * 60 * 60; // 7 days
+            startCountdown(countdownDuration);
+        };
+    </script>
+</body>
+</html>
