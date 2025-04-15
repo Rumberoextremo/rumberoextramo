@@ -39,9 +39,10 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuario creado con éxito.');
     }
 
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('Perfiles.edit-user', compact('user')); // Vista para editar el usuario  
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)

@@ -55,4 +55,14 @@ class User extends Authenticatable
         });
     }
     // Ya no necesitas estos métodos personalizados
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function movimientos()
+    {
+        return $this->hasMany(Transaccion::class);
+    }
 }

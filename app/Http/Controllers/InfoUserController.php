@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;  
 
-use Illuminate\Http\Request;  
-use Illuminate\Support\Facades\Auth;  
-use Illuminate\Support\Facades\Storage;  
-use Illuminate\Validation\Rule;  
-use App\Models\User;  
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+use App\Models\User;
 
 class InfoUserController extends Controller  
 {  
@@ -52,15 +52,15 @@ class InfoUserController extends Controller
 
         // Manejar la imagen de perfil si se ha subido  
         if ($request->hasFile('image')) {  
-            // Guardar la imagen y obtener la ruta almacenada  
-            $path = $request->file('image')->store('profile_images', 'public');  
-            // Actualizar la imagen en el array de datos  
-            $userData['profile_image'] = $path;  
+            // Obtener el contenido de la imagen y convertirlo a base64
+            $image = $request->file('image')->get();
+            $imageBase64 = base64_encode($image);
+            $userData['profile_image'] = $imageBase64;  
         }  
 
         // Actualizar el usuario en la base de datos  
         User::where('id', Auth::user()->id)->update($userData);  
 
         return redirect('/user-profile')->with('success', 'Profile updated successfully');  
-    }  
+    } 
 }
