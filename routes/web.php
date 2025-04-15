@@ -175,15 +175,6 @@ Route::get('/recarga-fallida', function () {
 	return view('recarga_fallida');
 })->name('recarga.fallida');
 
-//Ruta para Factura PDF
-Route::get('/facturas/pdf/{id}', function ($id) {
-    $factura = Factura::with('cliente')->findOrFail($id);
-    $mpdf = new Mpdf();
-    $mpdf->WriteHTML(view('facturas.pdf_single', compact('factura'))->render());
-    return $mpdf->Output('factura_' . $factura->numero . '.pdf', 'D');
-});
-
-
 // Middleware
 
 Route::group(['middleware' => 'guest'], function () {
