@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// Ruta Vista de Finanzas
 	Route::get('/finanzas', [FinanzasController::class, 'index'])->name('finanzas');
+	Route::get('/facturas/pdf/{id}', [FinanzasController::class, 'generarPdf']);
 
 	Route::get('/Demo', function () {
 		return view('pages.demo');

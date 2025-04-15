@@ -20,9 +20,15 @@ class Product extends Model
         'cantidad',
         'precio',
         'nombre_producto',
+        'factura_id',
         'descuento',
     ];
 
     // Si deseas manejar las fechas automáticamente
     public $timestamps = true;
+
+    public function factura()
+    {
+        return $this->belongsTo(Factura::class);
+    }
 }

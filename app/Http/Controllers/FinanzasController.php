@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Factura;
 use App\Models\Transaccion;
+use TCPDF;
 
 class FinanzasController extends Controller
 {
@@ -36,6 +37,39 @@ class FinanzasController extends Controller
 
         // Asegúrate de que todas las variables estén incluidas en compact()
         return view('finanzas', compact('bolivaresRecibidos', 'dolaresRecibidos', 'facturas', 'transacciones', 'facturacion'));
+    }
+
+    public function generarPdf($id)  
+    {  
+        // Busca la factura por su ID  
+        $factura = Factura::findOrFail($id);  
+        
+        // Crea una nueva instancia de TCPDF  
+        $pdf = new TCPDF();  
+        
+        // Establece las propiedades del documento  
+        $pdf->SetCreator(PDF_CREATOR);  
+        $pdf->SetAuthor('Tu Nombre');  
+        $pdf->SetTitle('Factura #' . $factura->numero);  
+        $pdf->SetSubject('Factura Detalles');  
+        $pdf->SetKeywords('TCPDF, PDF, factura');  
+        
+        // Establece el tamaño y la orientación del papel  
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);  
+        $pdf->SetMargins(10, 10, 10);  
+        $pdf->SetAutoPageBreak(TRUE, 15);  
+        
+        // Agrega una página  
+        $pdf->AddPage();  
+        
+        // Carga el HTML de la vista de la factura  
+        $html = view('factura', compact('factura'))->render();  
+        
+        // Escribe el HTML en el PDF  
+        $pdf->writeHTML($html, true, false, true, false, '');  
+        
+        // Cierra y muestra el PDF en el navegador  
+        return $pdf->Output('factura_' . $factura->numero . '.pdf', 'I'); // 'I' para mostrar  
     }
 
     public function grafica()

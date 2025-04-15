@@ -3,10 +3,10 @@
 @section('content')
 
 @if (session('mensaje'))
-        <div class="alert alert-info">{{ session('mensaje') }}</div>
-    @endif
+<div class="alert alert-info">{{ session('mensaje') }}</div>
+@endif
 
-    <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg">
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -52,7 +52,7 @@
                                             <a href="{{ url('/recarga/pago-movil') }}" class="btn btn-secondary btn-sm text-xs" data-toggle="tooltip" data-original-title="Realizar Pago">
                                                 Pagar
                                             </a>
-                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-pago-movil')">
+                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-pago-movil', this)">
                                                 Cambiar Estado
                                             </button>
                                         </td>
@@ -82,7 +82,7 @@
                                             <a href="{{ url('/recarga/divisas') }}" class="btn btn-secondary btn-sm text-xs" data-toggle="tooltip" data-original-title="Realizar Pago">
                                                 Pagar
                                             </a>
-                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-divisas')">
+                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-divisas', this)">
                                                 Cambiar Estado
                                             </button>
                                         </td>
@@ -112,7 +112,7 @@
                                             <a href="{{ url('/recarga/transferencia') }}" class="btn btn-secondary btn-sm text-xs" data-toggle="tooltip" data-original-title="Realizar Pago">
                                                 Pagar
                                             </a>
-                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-transferencia')">
+                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-transferencia', this)">
                                                 Cambiar Estado
                                             </button>
                                         </td>
@@ -142,7 +142,7 @@
                                             <a href="{{ url('/recarga/tarjeta') }}" class="btn btn-secondary btn-sm text-xs" data-toggle="tooltip" data-original-title="Realizar Pago">
                                                 Pagar
                                             </a>
-                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-tarjeta')">
+                                            <button class="btn btn-primary btn-sm ms-2" onclick="toggleStatus('status-tarjeta', this)">
                                                 Cambiar Estado
                                             </button>
                                         </td>
@@ -158,26 +158,27 @@
 </main>
 
 <script>
-function toggleStatus(elementId) {
-    const badge = document.getElementById(elementId);
-    if (badge.classList.contains('bg-gradient-success')) {
-        badge.classList.remove('bg-gradient-success');
-        badge.classList.add('bg-gradient-danger');
-        badge.textContent = 'No disponible';
-    } else if (badge.classList.contains('bg-gradient-danger')) {
-        badge.classList.remove('bg-gradient-danger');
-        badge.classList.add('bg-gradient-success');
-        badge.textContent = 'Disponible';
-    } else if (badge.classList.contains('bg-gradient-warning')) {
-        badge.classList.remove('bg-gradient-warning');
-        badge.classList.add('bg-gradient-success');
-        badge.textContent = 'Disponible';
-    } else {
-        badge.classList.remove('bg-gradient-warning');
-        badge.classList.add('bg-gradient-warning');
-        badge.textContent = 'Limitado';
+    function toggleStatus(statusId, button) {
+        const statusElement = document.getElementById(statusId);
+
+        // Cambiar el estado del método de pago
+        if (statusElement.innerText === "Disponible") {
+            statusElement.innerText = "No disponible";
+            statusElement.className = "badge badge-sm bg-gradient-danger"; // Cambiar clase para el color
+        } else if (statusElement.innerText === "No disponible") {
+            statusElement.innerText = "Disponible";
+            statusElement.className = "badge badge-sm bg-gradient-success"; // Cambiar clase para el color
+        } else {
+            statusElement.innerText = "Limitado";
+            statusElement.className = "badge badge-sm bg-gradient-warning"; // Cambiar clase para el color
+        }
+
+        // Deshabilitar el botón "Pagar" correspondiente
+        const payButton = button.closest('btn').querySelector('a.btn-secondary');
+        if (payButton) {
+            payButton.disabled = true; // Deshabilitar el botón "Pagar"
+        }
     }
-}
 </script>
 
 @endsection

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('precio', 10, 2);
             $table->string('nombre_producto');
             $table->decimal('descuento', 5, 2);
+            $table->foreignId('factura_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

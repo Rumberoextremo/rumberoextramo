@@ -74,7 +74,7 @@
                 <span class="text-xs">{{ $factura->numero }}</span>
               </div>
               <div class="d-flex align-items-center text-sm">
-                ${{ $factura->monto }}
+                ${{ number_format($factura->monto, 2) }} <!-- Mostrar monto en formato correcto -->
                 <a href="{{ url('/facturas/pdf/' . $factura->id) }}" class="btn btn-link text-danger text-sm mb-0 px-0 ms-4">
                   <i class="fas fa-file-pdf text-lg me-1"></i> <strong>PDF</strong>
                 </a>
