@@ -23,14 +23,14 @@ class HomeController extends Controller
     public function graficas()
     {
         // Obtener los datos de usuarios (ajusta según tu lógica)
-        $usuarios = User::all(); // o cualquier lógica para obtener usuarios
+        $usuarios = User::all();
 
         // Obtener el resumen de ventas (ajusta según tu lógica)
         $resumen_ventas = [
-            'ventas' => [450, 200, 100, 220, 500, 100, 400, 230, 500], // Datos de ventas
-            'aplicaciones_móviles' => [50, 40, 300, 220, 500, 250, 400, 230, 500], // Datos de aplicaciones móviles
-            'sitios_web' => [30, 90, 40, 140, 290, 290, 340, 230, 400], // Datos de sitios web
-            'meses' => ['Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'] // Etiquetas de meses
+            'ventas' => [450, 200, 100, 220, 500, 100, 400, 230, 500],
+            'aplicaciones_móviles' => [50, 40, 300, 220, 500, 250, 400, 230, 500],
+            'sitios_web' => [30, 90, 40, 140, 290, 290, 340, 230, 400],
+            'meses' => ['Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
         ];
 
         // Retornar la vista con los datos
