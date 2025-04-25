@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" class="backgroundColor">
+<html lang="en-US">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,30 +7,46 @@
     <title>Rumbero Extremo - MUY PRONTO !!</title>
     
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Lemon' rel='stylesheet' type='text/css'>
-    
     <link rel="shortcut icon" href="images/favicon.jpg">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="css/YTPlayer.css" />
-    <link rel="stylesheet" type="text/css" href="css/supersized.css" />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
     <style>
         body {
-            background: linear-gradient(to bottom right, #5548e6, #580ac5);
+            background-image: url('https://img1.wallspic.com/crops/6/4/6/5/7/175646/175646-azul_cobalto-azul-de_colores-azure-morado-1366x768.jpg'); /* Cambia esto a la ruta de tu imagen */
+            background-size: cover; /* Para cubrir toda la pantalla */
+            background-position: center; /* Centra la imagen */
             font-family: 'Open Sans', sans-serif;
             color: #fff;
             text-align: center;
             overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .logo {
             font-size: 4em;
             font-weight: bold;
             margin-top: 50px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
         }
         #text_slider {
             margin: 30px 0;
@@ -80,12 +96,16 @@
         a:hover {
             color: #ffffff;
         }
+        img {
+            width: 100px; /* Ajusta el tamaño según sea necesario */
+            margin: 20px;
+            animation: fadeIn 3s;
+        }
     </style>
 
 </head>
 <body>
 
-    <!-- CONTAINER -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -97,7 +117,6 @@
                         <div class="slide clearfix"><h2>Estamos trabajando en el nuevo sitio web.</h2></div>
                         <div class="slide clearfix"><h2>¡Nos vemos pronto!</h2></div>
                     </div>
-                    
                 </div>
 
                 <!-- COUNTDOWN -->
@@ -129,45 +148,40 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.plugin.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/supersized.min.js"></script>
-    <script src="js/jquery.cycle.min.js"></script>
-    <script src="js/jquery.mb.YTPlayer.js"></script>
     <script src="js/scripts.js"></script>
 
     <script>
         // Countdown Timer
-        function startCountdown(duration) {
-            let timer = duration, days, hours, minutes, seconds;
-            const countdownElement = {
-                days: document.getElementById('days'),
-                hours: document.getElementById('hours'),
-                minutes: document.getElementById('minutes'),
-                seconds: document.getElementById('seconds')
-            };
+        const countdownDuration = 90 * 24 * 60 * 60; // 90 días en segundos
+        let endTime = localStorage.getItem('endTime');
 
-            setInterval(function () {
-                days = parseInt(timer / 86400, 10);
-                hours = parseInt((timer % 86400) / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                countdownElement.days.textContent = days < 10 ? "0" + days : days;
-                countdownElement.hours.textContent = hours < 10 ? "0" + hours : hours;
-                countdownElement.minutes.textContent = minutes < 10 ? "0" + minutes : minutes;
-                countdownElement.seconds.textContent = seconds < 10 ? "0" + seconds : seconds;
-
-                if (--timer < 0) {
-                    timer = 0;
-                }
-            }, 1000);
+        if (!endTime) {
+            endTime = Date.now() + countdownDuration * 1000;
+            localStorage.setItem('endTime', endTime);
         }
 
-        // Set the countdown duration (e.g., 7 days in seconds)
-        window.onload = function () {
-            const countdownDuration = 90 * 24 * 60 * 60; // 7 days
-            startCountdown(countdownDuration);
-        };
+        function updateCountdown() {
+            const now = Date.now();
+            const remainingTime = Math.max(0, endTime - now);
+            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days < 10 ? "0" + days : days;
+            document.getElementById('hours').textContent = hours < 10 ? "0" + hours : hours;
+            document.getElementById('minutes').textContent = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById('seconds').textContent = seconds < 10 ? "0" + seconds : seconds;
+
+            if (remainingTime <= 0) {
+                clearInterval(interval);
+                localStorage.removeItem('endTime'); // Eliminar el tiempo al llegar a 0
+            }
+        }
+
+        // Actualiza el contador cada segundo
+        const interval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Inicializa el contador
     </script>
 </body>
 </html>

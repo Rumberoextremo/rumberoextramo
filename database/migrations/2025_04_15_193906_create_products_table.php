@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->decimal('precio', 10, 2);
             $table->string('nombre_producto');
-            $table->decimal('descuento', 5, 2);
-            $table->foreignId('factura_id')->constrained()->onDelete('cascade');
+            $table->decimal('descuento', 5, 2)->nullable(); // Permitir descuento nulo
+            $table->foreignId('factura_id')->nullable()->constrained()->onDelete('cascade'); // Permitir factura_id nulo
             $table->timestamps();
         });
     }
